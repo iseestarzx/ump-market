@@ -1,8 +1,7 @@
 <?php
-//Model — работает с корзиной (добавление, удаление, подсчёт).
 
 function getProductById($id) {
-    $pdo = new PDO('mysql:host=market.yasuo.ru;dbname=marketdb', 'pvlxqts', 'ko$%21C219x2@;;');
+    $pdo = new PDO('mysql:host=xxx;dbname=marketdb', 'user', 'pass');
     $stmt = $pdo->prepare("SELECT * FROM products WHERE id = ?");
     $stmt->execute([$id]);
     $product = $stmt->fetch(PDO::FETCH_ASSOC);
