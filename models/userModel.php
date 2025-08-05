@@ -14,12 +14,12 @@ function registerUser($name, $password) {
     }
 }
 
-function getUserByName($name) { // поиск юзера по имени в бд
+function getUserByName($name) {
         $pdo = new PDO('mysql:host=xxx;dbname=marketdb', 'user', 'pass');
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $stmt = $pdo->prepare("SELECT id, login, password, role FROM users WHERE login = ?");
-        $stmt->execute([$name]); // передаем значение вместо ?^
-        return $stmt->fetch(PDO::FETCH_ASSOC); // возвращает массив пользователя или false
+        $stmt->execute([$name]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     } catch (PDOException $e) {
         return false;
     }
